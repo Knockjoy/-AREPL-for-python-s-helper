@@ -4,15 +4,25 @@
 ##########################
 import inspect
 import re
+from pathlib import Path
 
 class HelperError(Exception):
     pass
 
 class Input_reader:
-    def __init__(self):
-        self.data = self.reader("input.txt").splitlines()
+    def __init__(self,path:str="input.txt"):
+        frame = inspect.stack()[1]
+        filename = frame[1]
+        excution_path=Path(filename)
+        input_path=Path(path)
+        self.data = self.reader(path).splitlines()
         self.ans_chacker = False
         self.count=0
+        if input_path.is_absolute():
+            self.reader(input_path)
+        else:
+            self.reader(excution_path.parent/input_path)
+            pass
 
     def compile(self):
         frame = inspect.stack()[1]
@@ -53,7 +63,13 @@ class Input_reader:
                         ''')
         with open(f"py_list/{num}.py", "w") as f:
             f.write(file_data)
+    
+    def print(self,value):
+        print(value)
+        pass
 
     def reader(self, path):
+        if not Path(path).exists():
+            HelperError("ファイルが見つかりません。")
         with open(path, "r") as f:
             return f.read()
