@@ -13,15 +13,15 @@ class Input_reader:
     def __init__(self,path:str="input.txt"):
         frame = inspect.stack()[1]
         filename = frame[1]
-        excution_path=Path(filename)
+        self.excution_path=Path(filename)
         input_path=Path(path)
-        self.data = self.reader(path).splitlines()
+        # self.data = self.reader(path).splitlines()
         self.ans_chacker = False
         self.count=0
         if input_path.is_absolute():
-            self.reader(input_path)
+            self.data=self.reader(input_path).splitlines()
         else:
-            self.reader(excution_path.parent/input_path)
+            self.data=self.reader(self.excution_path.parent/input_path).splitlines()
             pass
 
     def compile(self):
@@ -37,7 +37,8 @@ class Input_reader:
             rf'{const}.input\(\)', 'input()', self.file_data)#Input()を組み込み関数のinputにセットする
         self.file_data = re.sub(rf'{const}.compile\(\)', '', self.file_data)#compile()を削除
         self.file_data.strip()
-        with open("output.py", "w") as f:
+        output_file=Path("output.py")
+        with open(self.excution_path.parent/output_file, "w") as f:
             f.truncate(0)
             f.write(self.file_data)
 
