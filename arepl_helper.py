@@ -51,23 +51,6 @@ class Input_reader:
             return res
         else :raise HelperError("inputする要素がありません。")
 
-    def new_file(self, num):
-        frame = inspect.stack()[1]
-        filename = frame[1]
-        with open(filename, "w") as f2:
-            file_data = f2.read()
-            f2.truncate(0)
-            f2.write('''
-                    from arepl_helper import *\n
-                    helper=Input_reader()\n
-                    #helper.compile()\n
-                        ''')
-        with open(f"py_list/{num}.py", "w") as f:
-            f.write(file_data)
-    
-    def print(self,value):
-        print(value)
-        pass
 
     def reader(self, path):
         if not Path(path).exists():
