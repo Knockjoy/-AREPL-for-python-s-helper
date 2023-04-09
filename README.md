@@ -15,9 +15,16 @@
 ### はじめに
 areple_helperのInput_helperクラスをインスタンス化します。
 ```.py
-helper = Input_helper()
+from areple_helper import *
+helper = Input_helper(path,encoding)
 ```
+
+|Input_helperの引数|内容|初期値|
+---|---|---
+|path|input.txtのある場所|input.txt|
+|encoding|コンパイルするときの文字エンコードを指定します|utf-8|
 
 |クラス内関数名|動作|
 ---------------|----
 |input|input.txtから一行づつ取り出します。|
+|compile|このモジュールなしでも動作する形に直します。|
