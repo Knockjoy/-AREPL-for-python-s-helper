@@ -1,7 +1,3 @@
-##########################
-# -実行ファイルと同じ階層に
-#  input.txt,output.pyを配置
-##########################
 import inspect
 import re
 from pathlib import Path
