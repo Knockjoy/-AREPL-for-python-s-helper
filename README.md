@@ -27,4 +27,4 @@ helper = Input_helper(path,encoding)
 |クラス内関数名|動作|
 ---------------|----
 |input|input.txtから一行づつ取り出します。|
-|compile|このモジュールなしでも動作する形に直します。|
+|compile|このモジュールなしでも動作する形に直しout.pyに出力します。|
