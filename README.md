@@ -6,8 +6,8 @@
 
 <pre>
 .
-├── 実行するpythonファイル（環境変数で設定するのも可）
-├── areple_helper.py
+├── 実行するpythonファイル
+├── areple_helper.py（環境変数で設定するのも可）
 ├── input.txt
 └── output.py
 </pre>
